@@ -23,7 +23,7 @@ Innan du dyker in i koden, ta dig tid att förstå projektstrukturen. Här är e
   - Läs först mappstrukturen.
   - Titta på modellerna/repositores för att förstå databasens uppbyggnad och crud funktionalitet.
   - Öppna blueprints för att förstå hur routes(Kontroller) är uppbyggda för att hämta data från repositories(Modell) för att sen skicka datat till tempaltes(Vy)
-  - Öppna Templates för att se hur data presenteras i vyerna och hur vyer anropa via url:er anropar kontrollerna/routes
+  - Öppna Templates för att se hur data presenteras i vyerna och hur vyer anropa via url:er kontrollerna/routes
 
 - Rekommendation
-  - Följ flödet: vy(tempaltes) -> kontroller(routes) -> modell(repositores) för att förstå hur en request bearbetas från det användaren trycker på en länk/knapp till den ser resulatet av den tryckningen.
+  - Följ flödet: vy(templates) -> kontroller(routes) -> modell(repositores) för att förstå hur en request bearbetas från det användaren trycker på en länk/knapp till den ser resulatet av den tryckningen.
