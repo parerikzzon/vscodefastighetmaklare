@@ -1,0 +1,25 @@
+# Ignorera kompilerade Python-filer
+*.pyc
+__pycache__/
+
+# Ignorera virtuella miljöer
+venv/
+.venv/
+
+
+# Ignorera IDE-filer
+.idea/
+.vscode/
+
+# Ignorera loggfiler
+*.log
+
+# Ignorera databasfiler
+#*.db
+#*.sqlite
+
+# Ignorera lokala konfigurationsfiler (t.ex. hemlig nyckel)
+#.env
+#instance/
+
+
