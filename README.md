@@ -26,4 +26,4 @@ Innan du dyker in i koden, ta dig tid att förstå projektstrukturen. Här är e
   - Öppna Templates för att se hur data presenteras i vyerna och hur vyer anropa via url:er anropar kontrollerna/routes
 
 - Rekommendation
-  - Följ flödet: vy -> kontroller -> modell för att förstå hur en request bearbetas från det användaren trycker på en länk/knapp till den ser resulatet av den tryckningen.
+  - Följ flödet: vy(tempaltes) -> kontroller(routes) -> modell(repositores) för att förstå hur en request bearbetas från det användaren trycker på en länk/knapp till den ser resulatet av den tryckningen.
