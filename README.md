@@ -20,9 +20,10 @@ Innan du dyker in i koden, ta dig tid att förstå projektstrukturen. Här är e
     - Visar innehåll och hur användaren interagerar (knappar, länkar etc.).
 
 - Tips för att komma igång
-  - Läs först mappstrukturen och öppna huvudfilerna för app-setup och routes.
-  - Titta på modellerna för att förstå databasens uppbyggnad.
-  - Öppna templates för att se hur data presenteras i vyerna.
+  - Läs först mappstrukturen.
+  - Titta på modellerna/repositores för att förstå databasens uppbyggnad och crud funktionalitet.
+  - Öppna blueprints för att förstå hur routes(Kontroller) är uppbyggda för att hämta data från repositories(Modell) för att sen skicka datat till tempaltes(Vy)
+  - Öppna Templates för att se hur data presenteras i vyerna och hur vyer anropa via url:er anropar kontrollerna/routes
 
 - Rekommendation
-  - Följ flödet: vy -> kontroller -> modell för att förstå hur en request bearbetas.
+  - Följ flödet: vy -> kontroller -> modell för att förstå hur en request bearbetas från det användaren trycker på en länk/knapp till den ser resulatet av den tryckningen.
