@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titel %}{{ titel }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">{{ titel }}</h1>
+
+    <form method="POST">
+        
+        <div class="mb-3">
+            <label for="adress" class="form-label">Adress</label>
+            <input type="text" class="form-control" id="adress" name="adress" value="{{ bostad.adress if bostad else '' }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="stad" class="form-label">Stad</label>
+            <input type="text" class="form-control" id="stad" name="stad" value="{{ bostad.stad if bostad else '' }}" required>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="pris" class="form-label">Pris (som text)</label>
+                <input type="text" class="form-control" id="pris" name="pris" value="{{ bostad.pris if bostad else '' }}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="rum" class="form-label">Antal Rum</label>
+                <input type="number" class="form-control" id="rum" name="rum" value="{{ bostad.rum if bostad else '' }}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="yta" class="form-label">Boarea (kvm)</label>
+                <input type="number" class="form-control" id="yta" name="yta" value="{{ bostad.yta if bostad else '' }}" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="beskrivning" class="form-label">Beskrivning</label>
+            <textarea class="form-control" id="beskrivning" name="beskrivning" rows="5" required>{{ bostad.beskrivning if bostad else '' }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            {{ 'Spara Ändringar' if bostad else 'Lägg till bostad' }}
+        </button>
+        <a href="{{ url_for('admin_bp.admin_lista_bostader') }}" class="btn btn-secondary">Avbryt</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block titel %}{{ maklare.namn }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <a href="{{ url_for('maklare_bp.lista_maklare') }}" class="btn btn-link mb-3">&larr; Tillbaka till Mäklare</a>
+
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h1 class="card-title mb-0">{{ maklare.namn }}</h1>
+                    <p class="mb-0 fs-5">{{ maklare.titel }}</p>
+                </div>
+                
+                <div class="card-body">
+                    <h2 class="h4 border-bottom pb-2 mb-3">Kontaktinformation</h2>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item"><strong>E-post:</strong> <a href="mailto:{{ maklare.epost }}">{{ maklare.epost }}</a></li>
+                        <li class="list-group-item"><strong>Telefon:</strong> {{ maklare.telefon }}</li>
+                    </ul>
+
+                    <h2 class="h4 border-bottom pb-2 mb-3">Om Mig</h2>
+                    <p class="card-text">{{ maklare.beskrivning }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

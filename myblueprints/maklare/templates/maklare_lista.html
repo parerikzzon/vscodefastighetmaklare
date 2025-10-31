@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block titel %}{{ titel }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Våra professionella Mäklare</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for maklare in maklare_lista %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{ maklare.namn }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ maklare.titel }}</h6>
+                <p class="card-text">
+                    <strong>E-post:</strong> {{ maklare.epost }}<br>
+                    <strong>Telefon:</strong> {{ maklare.telefon }}
+                </p>
+                <!--använder js för att skapa klick händelse som gör ett fetch anrop till min 
+                @maklare_bp.route('/api/v1/maklare/<int:maklare_id>')
+                    för att hämta json data och presentera det i modalen-->
+                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#maklareModal"
+                    data-id="{{ maklare.id }}">
+                    Mer info
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
+    {% endfor %}
+    <!--modal som ska fyllas med vald mäklares datat se js cript längre ner-->
+    <div class="modal fade" id="maklareModal" tabindex="-1" aria-labelledby="maklareModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="maklareModalLabel">Mäklare</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Stäng"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Titel:</strong> <span id="modalTitel"></span></p>
+                    <p><strong>E-post:</strong> <span id="modalEpost"></span></p>
+                    <p><strong>Telefon:</strong> <span id="modalTelefon"></span></p>
+                    <p><strong>Om mäklaren:</strong> <span id="modalBeskrivning"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stäng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('maklareModal');
+
+    modal.addEventListener('show.bs.modal', async (event) => {
+        const button = event.relatedTarget;
+        const maklareId = button.getAttribute('data-id');
+
+        try {
+            //kom ihåg url_prefixet som är satt i flask_app.py det måste tyvärr med
+            const response = await fetch(`/maklare/api/v1/maklare/${maklareId}`);
+            if (!response.ok) {
+                throw new Error('Kunde inte hämta mäklarinfo');
+            }
+
+            const data = await response.json();
+
+            document.getElementById('maklareModalLabel').textContent = data.namn;
+            document.getElementById('modalTitel').textContent = data.titel;
+            document.getElementById('modalEpost').textContent = data.epost;
+            document.getElementById('modalTelefon').textContent = data.telefon;
+            document.getElementById('modalBeskrivning').textContent = data.beskrivning;
+        } catch (error) {
+            console.error('Fel vid hämtning:', error);
+            document.getElementById('maklareModalLabel').textContent = 'Fel';
+            document.getElementById('modalBeskrivning').textContent = 'Kunde inte hämta information.';
+        }
+    });
+});
+</script>
+{% endblock %}

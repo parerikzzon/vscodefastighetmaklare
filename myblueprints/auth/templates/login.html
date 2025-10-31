@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titel %}Logga in{% endblock %}
+{% block content %}
+<h2>Logga in</h2>
+<!--kolla base templaten för login och logga ut via menyn-->
+<form method="POST">
+    <div class="mb-3">
+        <label for="username">Användarnamn</label>
+        <input type="text" name="username" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="password">Lösenord</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Logga in</button>
+</form>
+{% endblock %}

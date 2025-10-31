@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block titel %}{{ titel }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Aktuella Nyheter</h2>
+<p class="lead">Håll dig uppdaterad med de senaste artiklarna från fastighetsmarknaden och våra mäklare.</p>
+
+<div class="row row-cols-1 g-4">
+    {% for nyhet in nyheter_lista %}
+    <div class="col mb-5">
+        <div class="card shadow-sm border-secondary">
+            <div class="card-body">
+                <h3 class="card-title text-primary">{{ nyhet.titel }}</h3>
+                <h6 class="card-subtitle mb-3 text-muted">
+                    Publicerad: {{ nyhet.datum.strftime('%Y-%m-%d %H:%M') }}
+                    {% if nyhet.maklare %}
+                        av <a href="{{ url_for('maklare_bp.maklare_detalj', maklare_id=nyhet.maklare_id) }}">{{ nyhet.maklare.namn }}</a>
+                    {% endif %}
+                </h6>
+                
+                <p class="card-text lead" style="white-space: pre-wrap;">
+                    {{ nyhet.innehall | truncate(300, True, '...') }}
+                </p>
+
+                <div class="mb-4">
+                    {#<a href="{{ url_for('nyheter_bp.nyhet_detalj', nyhet_id=nyhet.id) }}" class="btn btn-sm btn-outline-primary">Läs hela artikeln &raquo;</a>#}
+                </div>
+                
+                <hr class="mt-4">
+
+                <h5 class="mb-3 text-secondary">Kommentarer ({{ nyhet.kommentarer|length }})</h5>
+
+                {% if nyhet.kommentarer|length == 0 %}
+                    <p class="alert alert-light small">Inga kommentarer ännu.</p>
+                {% else %}
+                    {% for kommentar in nyhet.kommentarer %}
+                    <div class="comment-item border-start border-3 ps-3 py-2 mb-2 bg-light">
+                        <p class="mb-0 small">
+                            <strong>{{ kommentar.namn }}:</strong> {{ kommentar.innehall }}
+                        </p>
+                        <footer class="blockquote-footer text-end mb-0" style="font-size: 0.75rem;">
+                            {{ kommentar.datum.strftime('%Y-%m-%d %H:%M') }}
+                        </footer>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
