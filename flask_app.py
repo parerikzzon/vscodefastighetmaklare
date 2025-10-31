@@ -136,8 +136,9 @@ def create_routes(app):
 # ============================================================
 # Anropar Application Factory för att bygga hela appen
 app = skapa_app()
-
+# kommentera bort hela if när man lägger upp på pythonanywhere
 if __name__ == '__main__':
     # Kör applikationen!
     # debug=True: Aktiverar debug-läget, vilket gör att koden laddas om vid ändring i vscode
+    #denna komer bort när man lägger upp till pythonanywhere
     app.run(debug=True)
