@@ -12,12 +12,13 @@ Innan du dyker in i koden, ta dig tid att förstå projektstrukturen. Här är e
   - model / dbrepositories (Modeller)
     - Hanterar datalogik (CRUD).
     - Sätter upp tabeller i databasen.
-  - Blueprints med routes (Kontroller)
-    - Definierar applikationens flöde och logik.
-    - Kopplar ihop vyer (templates) med modeller.
-  - templates (Vyer)
-    - Applikationens GUI.
-    - Visar innehåll och hur användaren interagerar (knappar, länkar etc.).
+  - Blueprints med routes (Kontrollers) och Templates(Vyer)
+    - Routes definierar applikationens flöde och logik mellan vy-> kontroller-> modell.
+    - De kopplar ihop vyer (templates) så att de kan få data från modeller.
+      - templates (Vyer)
+        - Applikationens GUI.
+        - Visar innehåll och hur användaren interagerar (knappar, länkar etc.).
+          - Knappen, länken har url:er mappning till kontrollern
 
 - Tips för att komma igång
   - Läs först mappstrukturen.
