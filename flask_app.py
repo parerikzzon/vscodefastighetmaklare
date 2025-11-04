@@ -102,6 +102,7 @@ def registrera_blueprints(app):
     from myblueprints.maklare import maklare_bp
     from myblueprints.auth import auth_bp
     from myblueprints.nyheter import nyheter_bp
+    from myblueprints.shl import shl_bp
 
     # app.register_blueprint: Den faktiska kopplingen sker här.
     # url_prefix: Anger det prefix som alla routes i blueprintet kommer att ha.
@@ -110,6 +111,7 @@ def registrera_blueprints(app):
     app.register_blueprint(maklare_bp, url_prefix='/maklare')
     app.register_blueprint(auth_bp, url_prefix='/auth') 
     app.register_blueprint(nyheter_bp, url_prefix='/nyheter') 
+    app.register_blueprint(shl_bp, url_prefix='/shl') 
 
 
 def create_routes(app):

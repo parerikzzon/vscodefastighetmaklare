@@ -47,6 +47,8 @@ class Bostad(db.Model):
     
     # beskrivning: Lång textsträng (Text), valfri (nullable är True som standard)
     beskrivning = db.Column(db.Text)
+    
+    
 
     # -----------------------------------------------------------------
     # RELATIONER (Läggs till senare om Bostad har FK till t.ex. Mäklare)

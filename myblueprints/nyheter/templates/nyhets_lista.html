@@ -17,10 +17,13 @@
                     {% if nyhet.maklare %}
                         av <a href="{{ url_for('maklare_bp.maklare_detalj', maklare_id=nyhet.maklare_id) }}">{{ nyhet.maklare.namn }}</a>
                     {% endif %}
+                    
                 </h6>
                 
                 <p class="card-text lead" style="white-space: pre-wrap;">
                     {{ nyhet.innehall | truncate(300, True, '...') }}
+                    --
+                    <span class="badge bg-secondary"><i class="fa fa-thumbs-up"></i>{{nyhet.likes}}</span> <span class="badge bg-secondary"><i class="fa fa-thumbs-down"></i>{{nyhet.dislikes}}</span>
                 </p>
 
                 <div class="mb-4">
