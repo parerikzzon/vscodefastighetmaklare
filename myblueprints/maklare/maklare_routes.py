@@ -1,6 +1,6 @@
 # blueprints/maklare/maklare_routes.py
 """
-🤵 MÄKLARE ROUTES - Hanterar URL:er för att VISA mäklare (både HTML och JSON API).
+MÄKLARE ROUTES - Hanterar URL:er för att VISA mäklare (både HTML och JSON API).
 
 SINGLE RESPONSIBILITY: Fungerar som "Controller"-lagret för mäklardata.
 - Hanterar URL:er för listor, detaljer och API-svar.

@@ -84,7 +84,7 @@ def admin_form(bostad_id=None):
 
         if form_data is None:
             # 2. Validering misslyckades: Visa felmeddelande
-            flash('Ogiltiga formulärdata. Kontrollera dina värden.', 'error')
+            flash('Ogiltiga formulärdata. Kontrollera dina värden.', 'warning')
         else:
             # 3. Validering lyckades: Anropa Repository för att spara
             if bostad_id:
@@ -118,7 +118,7 @@ def admin_form(bostad_id=None):
 def admin_delete(bostad_id):
     # Kontrollera om användaren har rollen 'admin'
     if current_user.role != 'admin':
-        flash('Du har inte behörighet att ta bort bostäder.', 'error')
+        flash('Du har inte behörighet att ta bort bostäder.', 'warning')
         return redirect(url_for('auth_bp.login'))  
 
     """
@@ -134,7 +134,7 @@ def admin_delete(bostad_id):
         bostad_repo.radera(bostad_id)
         flash(f'Bostad "{adress}" har tagits bort!', 'success')
     else:
-        flash('Bostaden kunde inte hittas.', 'error')
+        flash('Bostaden kunde inte hittas.', 'warning')
 
     # 3. Gå tillbaka till listan
     return redirect(url_for('.admin_lista_bostader'))
