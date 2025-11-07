@@ -38,7 +38,7 @@ class MaklareForm(FlaskForm):
         validators=[
             DataRequired(message="Du måste ange en e-postadress."),  # Obligatoriskt
             Email(message="Ange en giltig e-postadress."),  # Kontrollera format
-            Length(max=120, message="E-postadressen får max vara 120 tecken.")  # Maxlängd
+            Length(max=50, message="E-postadressen får max vara 50 tecken.")  # Maxlängd
         ]
     )
 
@@ -46,7 +46,7 @@ class MaklareForm(FlaskForm):
     telefon = StringField(
         'Telefon',
         validators=[
-            Length(max=20, message="Telefonnumret får max vara 20 tecken.")  # Maxlängd
+            Length(max=15, message="Telefonnumret får max vara 15 tecken.")  # Maxlängd
         ]
     )
 
