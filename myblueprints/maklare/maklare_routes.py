@@ -7,9 +7,17 @@ SINGLE RESPONSIBILITY: Fungerar som "Controller"-lagret för mäklardata.
 - Använder maklare_repo för all dataåtkomst.
 """
 # Importera jsonify för att returnera JSON-svar i API-rutten
-from flask import jsonify, render_template
+from flask import jsonify, render_template, redirect, url_for, flash
+# login för att lägg till mäklare
+from flask_login import login_required
 # Importera blueprint-objektet och maklare_repo från __init__.py
 from . import maklare_bp, maklare_repo
+#för formulärshanteringen
+from models.maklare import Maklare
+from .form_maklare import MaklareForm
+# Importera autentiseringsfunktioner från Flask-Login
+from flask_login import login_required, current_user 
+
 
 
 # ============================================================
@@ -86,3 +94,34 @@ def api_maklare(maklare_id):
     else:
         # 3. Om den inte hittas, returnera ett felmeddelande och HTTP-status 404
         return jsonify({'error': 'Mäklare hittades inte'}), 404
+    
+# ==================CRUD===============
+@maklare_bp.route('/skapa', methods=['GET', 'POST'])
+@login_required
+def skapa_maklare():
+    """
+    Skapar en ny mäklare via ett formulär.
+    URL: /maklare/skapa
+    """
+    # Kontrollera om användaren har rollen 'admin'
+    if current_user.role != 'admin':
+        flash('Du har inte behörighet att lägg till mäklare.', 'warning')
+        return redirect(url_for('auth_bp.login')) 
+    # Skapa en instans av formuläret
+    form = MaklareForm()
+    if form.validate_on_submit():
+        # Skapa ett nytt Maklare-objekt med data från formuläret
+        ny_maklare = Maklare(
+            namn=form.namn.data,
+            epost=form.epost.data,
+            telefon=form.telefon.data,
+            titel=form.titel.data,
+            beskrivning=form.beskrivning.data
+        )
+        maklare_repo.skapa_ny(ny_maklare)
+        # redirect till sidan som visar alla mäklare.
+        flash('Ny mäklaren har skapats!', 'success')
+        return redirect(url_for('maklare_bp.lista_maklare'))
+
+    # Visa formuläret (GET eller om validering misslyckas)
+    return render_template('maklare_form.html', form=form)

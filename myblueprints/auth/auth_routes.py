@@ -48,7 +48,10 @@ def login():
                 flash('Administratörsinloggning lyckades!', 'success')
                 # Omdirigera admin till admin-panelen
                 # 'admin_bp.admin_lista_bostader' är blueprintnamn.funktionsnamn
-                return redirect(url_for('admin_bp.admin_lista_bostader'))
+                #eller till den sida man kom ifrån som krävde login tex om man vill lägg till en mäklare
+                next_page = request.args.get('next')
+                return redirect(next_page or url_for('admin_bp.admin_lista_bostader'))
+                #return redirect(url_for('admin_bp.admin_lista_bostader'))
             else:
                 # Omdirigera vanliga användare till startsidan
                 

@@ -37,7 +37,7 @@ def lista_bostader():
 
 # Route 2: Visar detaljer för en specifik bostad
 # <int:bostad_id> skapar en dynamisk URL-parameter och säkerställer att den är ett heltal
-@bostader_bp.route('/bostader/<int:bostad_id>')
+@bostader_bp.route('bostad/<int:bostad_id>')
 def bostad_detalj(bostad_id):
     """
     Visar en enskild bostadsdetaljsida baserat på ID.

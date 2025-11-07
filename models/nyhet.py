@@ -17,10 +17,6 @@ class Nyhet(db.Model):
     titel = db.Column(db.String(200), nullable=False)
     innehall = db.Column(db.Text, nullable=False)
     datum = db.Column(db.DateTime, nullable=False, default=datetime.now)
-    # likes: Heltal, valfri (nullable är True som standard)
-    likes = db.Column(db.Integer)
-     # dislikes: Heltal, valfri (nullable är True som standard)
-    dislikes = db.Column(db.Integer)
     
     # Valfritt: Koppling till Mäklare (vem som publicerade nyheten)
     # foreign key till maklare.id

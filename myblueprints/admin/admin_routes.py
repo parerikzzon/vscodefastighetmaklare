@@ -52,6 +52,10 @@ def admin_lista_bostader():
 @admin_bp.route('/edit/<int:bostad_id>', methods=['GET', 'POST'])
 @login_required 
 def admin_form(bostad_id=None):
+    # Kontrollera om användaren har rollen 'admin'
+    if current_user.role != 'admin':
+        flash('Du har inte behörighet att lägga till eller uppdatera bostäder.', 'warning')
+        return redirect(url_for('auth_bp.login'))  
     """
     Hantera logiken för att antingen visa formuläret (GET) eller spara data (POST).
     """
@@ -112,9 +116,15 @@ def admin_form(bostad_id=None):
 @admin_bp.route('/delete/<int:bostad_id>', methods=['POST'])
 @login_required 
 def admin_delete(bostad_id):
+    # Kontrollera om användaren har rollen 'admin'
+    if current_user.role != 'admin':
+        flash('Du har inte behörighet att ta bort bostäder.', 'error')
+        return redirect(url_for('auth_bp.login'))  
+
     """
     Raderar en bostad. Använder POST-metod för säkerhet mot CSRF/slumpmässiga klick.
     """
+    
     # 1. Hämta objektet FÖRST (för att få dess namn till meddelandet)
     bostad = bostad_repo.hamta_en(bostad_id)
 

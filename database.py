@@ -1,61 +1,59 @@
-"""
-💾 DATABASHANTERING (database.py) - En fil för allt som har med databasanslutning att göra.
-
-SINGLE RESPONSIBILITY: Denna fil har ENDAST ansvar för:
-1. Skapa SQLAlchemy-objektet (databasanslutningen).
-2. Initiera databasen och koppla den till Flask-appen (init_db).
-3. Skapa alla tabeller baserat på modellerna (db.create_all).
-4. Köra alla startdatafunktioner (seeding).
-
-Denna fil känner INTE till affärslogik eller routing – den är bara databasens centrala nav!
-"""
 from flask_sqlalchemy import SQLAlchemy
 
-# Skapa SQLAlchemy-instansen. Denna instans är vårt gränssnitt till databasen.
-# Detta objekt (db) importeras och används sedan av ALLA modell-klasser (t.ex. Maklare(db.Model)).
+# Skapa en SQLAlchemy-instans.
+# Detta objekt 'db' är gränssnittet mellan din kod och databasen.
+# Alla modell-klasser som t.ex. Maklare, Bostad, User kommer använda 'db' för att definiera sina tabeller.
 db = SQLAlchemy()
-
 
 def init_db(app):
     """
-    Initierar databasen för Flask-applikationen.
+    Förbereder och startar databasen i din Flask-applikation.
 
-    Denna funktion är nödvändig för att SQLAlchemy ska känna till appens konfiguration
-    (som databasens anslutnings-URL).
+    Varför behövs detta?
+    1. Flask och SQLAlchemy måste kopplas ihop så att rätt inställningar används (t.ex. adress till databasen).
+    2. Tabellerna för alla dina modeller måste skapas (om de inte redan finns).
+    3. Du kan välja att direkt fylla tabellerna med startdata när du kör appen första gången.
 
     Args:
-        app: Flask-applikationen (Måste vara den instans som skapades i flask_app.py).
+        app: Din Flask-applikation (det objekt du skapar med app = Flask(__name__)).
     """
-    # 1. Koppla db-objektet till vår Flask-app.
-    # Nu har db-objektet tillgång till konfigurationen (t.ex. SQLALCHEMY_DATABASE_URI).
+
+    # Kopplar ihop databas-objektet (db) med Flask-applikationen.
+    # Gör att 'db' kan läsa t.ex. databas-URL från Flask-config.
     db.init_app(app)
 
-    # 2. Skapa ett App Context.
-    # Databasoperationer som att skapa tabeller måste ske inuti en "app-miljö".
+    # Skapar ett app-context. Det är som att "aktivera" Flask-världen,
+    # vilket krävs när man ska ändra saker i databasen (ex. skapa tabeller).
     with app.app_context():
-        # --- A. Importera alla Modeller ---
-        # SQLAlchemy MÅSTE känna till alla modellklasser (Maklare, Bostad, etc.) 
-        # INNAN den kan skapa tabellerna. Importen säkerställer detta.
-        from models.maklare import Maklare
-        from models.bostad import Bostad
-        from models.user import User
-        from models.nyhet import Nyhet
-        from models.kommentar import Kommentar
-        
-        # --- B. Skapa alla Tabeller ---
-        # db.create_all(): Går igenom alla importerade modeller och skapar motsvarande 
-        # tabeller i databasen om de INTE redan existerar.
+        # --- Modell-import ---
+        # Viktigt! SQLAlchemy måste veta vilka modeller som finns innan tabeller kan skapas.
+        # Genom att importera modellklasserna, registreras de hos SQLAlchemy.
+        from models.maklare import Maklare           # Mäklar-tabellen
+        from models.bostad import Bostad             # Bostads-tabellen
+        from models.user import User                 # Användar-tabellen
+        from models.nyhet import Nyhet               # Nyhets-tabellen
+        from models.kommentar import Kommentar       # Kommentar-tabellen
+        from models.kontor import Kontor             # Kontors-tabellen
+
+        # --- Tabellskapande ---
+        # db.create_all(): Skapar tabeller i databasen utifrån de modeller som är importerade.
+        # Om tabeller redan finns, händer inget (det är säkert att köra).
         db.create_all()
-        
-        # --- C. Fyll Tabellerna med Startdata (Seeding) ---
-        # Importera alla funktioner som lägger till startdata i databasen.
+
+        # --- Startdata / Seeding ---
+        # Här importeras funktioner som lägger till startdata i databasen, ex. några mäklare och bostäder.
+        # OBS! Startdata är valfritt, men bra för att kunna börja testa appen med något innehåll.
         from models.maklare import skapa_start_maklare
         from models.bostad import skapa_start_bostader
         from models.user import skapa_start_users
         from models.nyhet import skapa_start_nyheter_och_kommentarer
-        
-        # Kör alla startdata-funktioner för att fylla databasen med initial data.
+        from models.kontor import skapa_start_kontor
+
+        # Kör startdata-funktionerna så de fyller på med initial data.
         skapa_start_maklare()
         skapa_start_bostader()
         skapa_start_users()
         skapa_start_nyheter_och_kommentarer()
+        skapa_start_kontor()
+
+        # Nu är databasen klar att användas med Flask och alla tabeller är upprättade & fyllda med startdata.

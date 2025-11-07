@@ -80,12 +80,12 @@ class MaklareRepository:
         """
         # Skapa en ny Python-instans av modellen.
         ny_maklare = Maklare(
-            namn=data['namn'],
-            epost=data['epost'],
+            namn=data.namn, #är objekt nu när vi andlöer flask-wtforms inte en dict så inte data['namn'],
+            epost=data.epost,#data['epost'],
             # Använder .get() med tom sträng som standard för valfria fält.
-            telefon=data.get('telefon', ''),
-            titel=data.get('titel', ''),
-            beskrivning=data.get('beskrivning', '')
+            telefon=data.telefon,#data.get('telefon', ''),
+            titel=data.titel,#data.get('titel', ''),
+            beskrivning=data.beskrivning,#data.get('beskrivning', '')
         )
 
         # 1. Lägg till i session: Förbereder SQL INSERT-frågan.

@@ -1,0 +1,106 @@
+"ListingCard21629256": {
+    "__typename": "ListingCard",
+    "activePackage": "PREMIUM",
+    "askingPrice": "1 295 000 kr",
+    "brokerName": "Jenny Lorenz",
+    "brokerThumbnail": "https://bilder.hemnet.se/images/broker_profile_small/37/da/37da99e09dafe88d0b061277b26a15bf.jpg",
+    "brokerAgencyLogo": "https://bilder.hemnet.se/images/broker_logo_2/73/c6/73c63376473b74a25e13711a82fcae60.png",
+    "brokerAgencyName": "Länsförsäkringar Fastighetsförmedling Borlänge",
+    "coordinates": {
+        "__typename": "GeometryPoint",
+        "lat": 60.4854546,
+        "long": 15.4259758
+    },
+    "description": "Välkommen till visning av denna härliga bostad!\r\nLägenheten bjuder på ett fantastiskt ljusflöde från tre väderstreck samt en generös, inglasad balkong med markis som ger en perfekt plats för avkoppling oavsett årstid.\r\n\r\nKöket är renoverat i stilrena materialval och erbjuder goda arbetsytor, gott om förvaring och en trevlig matplats intill fönstret. De ljusa köksluckorna tillsammans med det mörka…",
+    "design": {
+        "__typename": "ListingCardDesign",
+        "level": 3000
+    },
+    "fee": "2 882 kr/mån",
+    "floor": "vån 2/8",
+    "hemnetBusiness": true,
+    "housingForm": {
+        "__typename": "HousingForm",
+        "symbol": "APARTMENT",
+        "name": "Lägenhet"
+    },
+    "id": "21629256",
+    "images": [
+        {
+            "__typename": "CardImage",
+            "filename": "20/8d/208d888e6149c945ff2fcbea637c10b0.jpg",
+            "lqipBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAMklEQVR4nAEnANj/ANLR0I+Pic7LxampowC/vr+bnJhPTUoLBAAA1sO4/v7+3dzY4N7aw3wX4hJs+BcAAAAASUVORK5CYII="
+        },
+        {
+            "__typename": "CardImage",
+            "filename": "8f/9c/8f9c2666c41e9eb252bfdf2b8d44d04c.jpg",
+            "lqipBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAMklEQVR4nAEnANj/AD8/O6Oinry7ucK/vQDv7u3W0s739/X6+voABgUAiXZjXEYq4t7byXQW8CtCMOgAAAAASUVORK5CYII="
+        },
+        {
+            "__typename": "CardImage",
+            "filename": "f4/7f/f47f3bd09a68750bf40a44db3581727f.jpg",
+            "lqipBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAMklEQVR4nAEnANj/AAQHAJ6em/z7+qenowAjJySfoJ7v7eiJiIkAbnBueXBgWks6nZWObegSoh2uMPYAAAAASUVORK5CYII="
+        },
+        {
+            "__typename": "CardImage",
+            "filename": "74/42/7442f855fcf2374ffaf6b4478d270337.jpg",
+            "lqipBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAMklEQVR4nAEnANj/AMrKxL+/vOfm346HhQD3+fnAv7rt6eN4dHcAlIuBJRkAFwAAGxEC8dIUOkxAPo4AAAAASUVORK5CYII="
+        },
+        {
+            "__typename": "CardImage",
+            "filename": "72/b5/72b59f3a36dd811f0854c5d052304104.jpg",
+            "lqipBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAMElEQVR4nGOws7f+9ftLf1/7+fPnGGxtrbo6262szG/euMHAzMpeV5hkoyfz8dMnAGzDEe8E3v32AAAAAElFTkSuQmCC"
+        }
+    ],
+    "labels": [
+        {
+            "__typename": "Label",
+            "text": "Lör 15 nov kl 12:30",
+            "identifier": "HIGHLIGHTED_SHOWING",
+            "category": "STATE"
+        },
+        {
+            "__typename": "Label",
+            "text": "Premium",
+            "identifier": "PREMIUM",
+            "category": "PRODUCT"
+        },
+        {
+            "__typename": "Label",
+            "text": "Balkong",
+            "identifier": "BALCONY",
+            "category": "FEATURE"
+        },
+        {
+            "__typename": "Label",
+            "text": "Hiss",
+            "identifier": "ELEVATOR",
+            "category": "FEATURE"
+        }
+    ],
+    "landArea": null,
+    "listingCollectionIds": [],
+    "livingAndSupplementalAreas": "59 m²",
+    "locationDescription": "Dagny, Borlänge kommun",
+    "newConstruction": false,
+    "projectId": null,
+    "publishedAt": "1762182471.0",
+    "recordType": "COMMON",
+    "removedBeforeShowing": false,
+    "rooms": "2 rum",
+    "saved": false,
+    "showings": [
+        "Lör 15 nov kl 12:30"
+    ],
+    "slug": "lagenhet-2rum-dagny-borlange-kommun-vasagatan-12a-21629256",
+    "squareMeterPrice": "21 949 kr/m²",
+    "streetAddress": "Vasagatan 12A",
+    "thumbnails({\"format\":\"ITEMGALLERY_CUT\"})": [
+        "https://bilder.hemnet.se/images/itemgallery_cut/20/8d/208d888e6149c945ff2fcbea637c10b0.jpg",
+        "https://bilder.hemnet.se/images/itemgallery_cut/8f/9c/8f9c2666c41e9eb252bfdf2b8d44d04c.jpg",
+        "https://bilder.hemnet.se/images/itemgallery_cut/f4/7f/f47f3bd09a68750bf40a44db3581727f.jpg",
+        "https://bilder.hemnet.se/images/itemgallery_cut/74/42/7442f855fcf2374ffaf6b4478d270337.jpg",
+        "https://bilder.hemnet.se/images/itemgallery_cut/72/b5/72b59f3a36dd811f0854c5d052304104.jpg"
+    ],
+    "upcoming": false
+}

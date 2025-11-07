@@ -34,7 +34,11 @@ bostader_bp = Blueprint(
 # ============================================================
 # Importerar den enda instansen av bostad_repository. 
 # Detta är nödvändigt för att routarna ska kunna hämta bostadsdata.
+# ----sqlachmey basert repository----
 from dbrepositories.bostad_repository import bostad_repo 
+
+# ----sqlite basert repository----
+#from dbrepositories.sqlite_bostad_repository import bostad_repo
 
 
 # ============================================================

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block titel %}{{ titel }}{% endblock %}
+
+{% block content %}
+
+    <h1 class="mb-4">Lägg till ny mäklare</h1>
+    
+
+    <!-- Formuläret börjar här -->
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!-- CSRF-skydd -->
+
+        <!-- Namn-fält -->
+        <div class="mb-3">
+            {{ form.namn.label(class="form-label") }}
+            {{ form.namn(class="form-control") }}
+            <div class="form-text">{{ form.namn.description }}</div>
+        </div>
+
+        <!-- E-post-fält -->
+        <div class="mb-3">
+            {{ form.epost.label(class="form-label") }}
+            {{ form.epost(class="form-control") }}
+            <div class="form-text">{{ form.epost.description }}</div>
+            {% if form.epost.errors %}
+                <div class="text-danger">
+                    {% for error in form.epost.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Telefon-fält -->
+        <div class="mb-3">
+            {{ form.telefon.label(class="form-label") }}
+            {{ form.telefon(class="form-control") }}
+            <div class="form-text">{{ form.telefon.description }}</div>
+        </div>
+
+        <!-- Titel-fält -->
+        <div class="mb-3">
+            {{ form.titel.label(class="form-label") }}
+            {{ form.titel(class="form-control") }}
+            <div class="form-text">{{ form.titel.description }}</div>
+        </div>
+
+        <!-- Beskrivning-fält -->
+        <div class="mb-3">
+            {{ form.beskrivning.label(class="form-label") }}
+            {{ form.beskrivning(class="form-control", rows=4) }}
+            <div class="form-text">{{ form.beskrivning.description }}</div>
+        </div>
+
+        <!-- Skicka-knapp -->
+        <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+    </form>
+{% endblock %}
